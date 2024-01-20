@@ -44,11 +44,17 @@ TEST(StringUtilsTest, LStrip){
     EXPECT_EQ(StringUtils::LStrip("   hello   "), "hello   ");
     EXPECT_EQ(StringUtils::LStrip("   h  ello"), "h  ello");
     EXPECT_EQ(StringUtils::LStrip(std::string()), "");
-    
+
 }
 
 TEST(StringUtilsTest, RStrip){
-    
+    EXPECT_EQ(StringUtils::RStrip("hello"), "hello");
+    EXPECT_EQ(StringUtils::RStrip("hello "), "hello");
+    EXPECT_EQ(StringUtils::RStrip("    hello"), "    hello");
+    EXPECT_EQ(StringUtils::RStrip("   hello   "), "   hello");
+    EXPECT_EQ(StringUtils::RStrip("   h  ello"), "   h  ello");
+    EXPECT_EQ(StringUtils::RStrip("hell    o    "), "hell    o");
+    EXPECT_EQ(StringUtils::RStrip(std::string()), "");
 }
 
 TEST(StringUtilsTest, Strip){

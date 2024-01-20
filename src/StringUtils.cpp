@@ -54,13 +54,35 @@ std::string LStrip(const std::string &str) noexcept{
     if(str.empty()){
         return "";
     }
-    
-    return "";
+
+    int index;
+
+    for(size_t i = 0; i < str.length(); i++){
+        if (str[i] != ' '){
+            index = i;
+            break;
+        }
+    }
+
+    return str.substr(index, str.length());
 }
 
 std::string RStrip(const std::string &str) noexcept{
     // Replace code here
-    return "";
+    if(str.empty()){
+        return "";
+    }
+
+    int index;
+
+    for(size_t i = str.length() - 1; i > 0; i--){
+        if (str[i] != ' '){
+            index = i;
+            break;
+        }
+    }
+
+    return str.substr(0, index + 1);
 }
 
 std::string Strip(const std::string &str) noexcept{
