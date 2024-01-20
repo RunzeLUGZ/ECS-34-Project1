@@ -51,6 +51,10 @@ std::string Lower(const std::string &str) noexcept{
 
 std::string LStrip(const std::string &str) noexcept{
     // Replace code here
+    if(str.empty()){
+        return "";
+    }
+    
     return "";
 }
 

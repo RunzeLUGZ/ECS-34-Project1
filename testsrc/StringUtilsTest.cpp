@@ -38,6 +38,12 @@ TEST(StringUtilsTest, Lower){
 }
 
 TEST(StringUtilsTest, LStrip){
+    EXPECT_EQ(StringUtils::LStrip("hello"), "hello");
+    EXPECT_EQ(StringUtils::LStrip(" hello"), "hello");
+    EXPECT_EQ(StringUtils::LStrip("    hello"), "hello");
+    EXPECT_EQ(StringUtils::LStrip("   hello   "), "hello   ");
+    EXPECT_EQ(StringUtils::LStrip("   h  ello"), "h  ello");
+    EXPECT_EQ(StringUtils::LStrip(std::string()), "");
     
 }
 
