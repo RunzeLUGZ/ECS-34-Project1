@@ -6,6 +6,7 @@ TEST(StringUtilsTest, SliceTest){
 
     EXPECT_EQ(StringUtils::Slice(Base,0), "Hello");
     EXPECT_EQ(StringUtils::Slice(Base,1), "ello");
+    EXPECT_EQ(StringUtils::Slice(Base,2), "llo");
 }
 
 TEST(StringUtilsTest, Capitalize){
@@ -19,11 +20,21 @@ TEST(StringUtilsTest, Capitalize){
 }
 
 TEST(StringUtilsTest, Upper){
-    
+    EXPECT_EQ(StringUtils::Upper("hello"), "HELLO");
+    EXPECT_EQ(StringUtils::Upper(" hello"), " HELLO");
+    EXPECT_EQ(StringUtils::Upper(std::string()), "");
+    EXPECT_EQ(StringUtils::Upper("HELLO"), "HELLO");
+    EXPECT_EQ(StringUtils::Upper("heLlO"), "HELLO");
+    EXPECT_EQ(StringUtils::Upper("Good Bye"), "GOOD BYE");
 }
 
 TEST(StringUtilsTest, Lower){
-    
+    EXPECT_EQ(StringUtils::Lower("HELLO"), "hello");
+    EXPECT_EQ(StringUtils::Lower(" HELLO"), " hello");
+    EXPECT_EQ(StringUtils::Lower(std::string()), "");
+    EXPECT_EQ(StringUtils::Lower("hello"), "hello");
+    EXPECT_EQ(StringUtils::Lower("HElLo"), "hello");
+    EXPECT_EQ(StringUtils::Lower("GOOD BYE"), "good bye");
 }
 
 TEST(StringUtilsTest, LStrip){

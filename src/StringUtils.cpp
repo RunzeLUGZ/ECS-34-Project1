@@ -1,25 +1,52 @@
 #include "StringUtils.h"
+#include <cctype>
 
 namespace StringUtils{
 
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     // Replace code here
-    return "";
+    return str.substr(start,str.length() - start);
 }
 
 std::string Capitalize(const std::string &str) noexcept{
     // Replace code here
-    return "";
+    if(str.empty()){
+        return "";
+    }
+
+    std::string temp;
+    temp += toupper(str[0]);
+    for(size_t i = 1; i < str.length(); i++){
+        temp += tolower(str[i]);
+    }
+    return temp;
 }
 
 std::string Upper(const std::string &str) noexcept{
     // Replace code here
-    return "";
+    if(str.empty()){
+        return "";
+    }
+
+    std::string temp;
+    for(size_t i = 0; i < str.length(); i++){
+        temp += toupper(str[i]);
+    }
+    return temp;
 }
+
 
 std::string Lower(const std::string &str) noexcept{
     // Replace code here
-    return "";
+    if(str.empty()){
+        return "";
+    }
+
+    std::string temp;
+    for(size_t i = 0; i < str.length(); i++){
+        temp += tolower(str[i]);
+    }
+    return temp;
 }
 
 std::string LStrip(const std::string &str) noexcept{
