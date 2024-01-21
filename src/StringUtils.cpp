@@ -85,25 +85,63 @@ std::string RStrip(const std::string &str) noexcept{
     return str.substr(0, index + 1);
 }
 
+
 std::string Strip(const std::string &str) noexcept{
     // Replace code here
-    return "";
+    return (RStrip(LStrip(str)));
 }
 
-std::string Center(const std::string &str, int width, char fill) noexcept{
-    // Replace code here
-    return "";
-}
 
 std::string LJust(const std::string &str, int width, char fill) noexcept{
     // Replace code here
-    return "";
+    std::string temp;
+    if(str.empty()){
+        for (int i = 0; i < width; i++){
+            temp += fill;
+        }
+        return temp;
+    }
+    else{
+        temp += str;
+        for (int i = str.length(); i < width; i++){
+            temp += fill;
+        }
+        return temp;
+    }
 }
 
 std::string RJust(const std::string &str, int width, char fill) noexcept{
     // Replace code here
-    return "";
+    std::string temp;
+    if(str.empty()){
+        for (int i = str.length(); i < width; i++){
+            temp += fill;
+        }
+        return temp;
+    }
+    else{
+        for (size_t i = 0; i < width - str.length(); i++){
+            temp += fill;
+        }
+        return temp + str;
+    }
 }
+
+std::string Center(const std::string &str, int width, char fill) noexcept{
+    // Replace code here
+    std::string temp;
+
+    if(str.empty()){
+        for (size_t i = 0; i < width - str.length(); i++){
+            temp += fill;
+        }
+        return temp + str;
+    }
+    else {
+        return (LJust(RJust(str, 2/width + 1, fill), width));
+    }
+}
+
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
     // Replace code here

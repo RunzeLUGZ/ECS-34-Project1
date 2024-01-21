@@ -58,19 +58,45 @@ TEST(StringUtilsTest, RStrip){
 }
 
 TEST(StringUtilsTest, Strip){
-    
+    EXPECT_EQ(StringUtils::Strip("hello"), "hello");
+    EXPECT_EQ(StringUtils::Strip(" hello "), "hello");
+    EXPECT_EQ(StringUtils::Strip("      hello      "), "hello");
+    EXPECT_EQ(StringUtils::Strip("hello      "), "hello");
+    EXPECT_EQ(StringUtils::Strip("      hello"), "hello");
+    EXPECT_EQ(StringUtils::Strip("h e l l o"), "h e l l o");
+    EXPECT_EQ(StringUtils::Strip(std::string()), "");
 }
 
 TEST(StringUtilsTest, Center){
-    
+    EXPECT_EQ(StringUtils::Center("ab",5,'-'), "-ab--");
+    EXPECT_EQ(StringUtils::Center("A",4,'-'), "-A--");
+    EXPECT_EQ(StringUtils::Center("A",3,'-'), "-A-");
+    EXPECT_EQ(StringUtils::Center("A",5,'-'), "--A--");
+    EXPECT_EQ(StringUtils::Center("ABC",4,'-'), "--ABC--");
+    EXPECT_EQ(StringUtils::Center("ABC",5,'-'), "--ABC---");
+    EXPECT_EQ(StringUtils::Center("ABC",5,'*'), "**ABC***");
+    EXPECT_EQ(StringUtils::Center(std::string(), 5, '$'), "$$$$$");
 }
 
 TEST(StringUtilsTest, LJust){
-    
+    EXPECT_EQ(StringUtils::LJust("AB", 5, '-'), "AB---");
+    EXPECT_EQ(StringUtils::LJust("AB", 3, '-'), "AB-");
+    EXPECT_EQ(StringUtils::LJust("AB", 2, '-'), "AB");
+    EXPECT_EQ(StringUtils::LJust("ABC", 5, '-'), "ABC--");
+    EXPECT_EQ(StringUtils::LJust("A", 5, '-'), "A----");
+    EXPECT_EQ(StringUtils::LJust("AB", 5, '*'), "AB***");
+    EXPECT_EQ(StringUtils::LJust("AB", 5, '$'), "AB$$$");
+    EXPECT_EQ(StringUtils::LJust(std::string(), 5, '$'), "$$$$$");
 }
 
 TEST(StringUtilsTest, RJust){
-    
+    EXPECT_EQ(StringUtils::RJust("AB", 5, '-'), "---AB");
+    EXPECT_EQ(StringUtils::RJust("AB", 3, '-'), "-AB");
+    EXPECT_EQ(StringUtils::RJust("AB", 2, '-'), "AB");
+    EXPECT_EQ(StringUtils::RJust("A", 5, '-'), "----A");
+    EXPECT_EQ(StringUtils::RJust("AB", 5, '*'), "***AB");
+    EXPECT_EQ(StringUtils::RJust("ABC", 5, '*'), "**ABC");
+    EXPECT_EQ(StringUtils::RJust(std::string(), 5, '$'), "$$$$$");
 }
 
 TEST(StringUtilsTest, Replace){

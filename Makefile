@@ -1,3 +1,7 @@
+CC = gcc
+CXX = g++
+
+
 INC_DIR = ./include
 SRC_DIR = ./src
 OBJ_DIR = ./obj
