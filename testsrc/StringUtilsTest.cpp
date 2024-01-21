@@ -110,7 +110,23 @@ TEST(StringUtilsTest, Replace){
 }
 
 TEST(StringUtilsTest, Split){
-    
+    std::vector<std::string> vector1 = {"Hello","World"};
+    std::vector<std::string> vector2 = {"Hello","World","Bye"};
+    EXPECT_EQ(StringUtils::Split("Hello World", std::string()), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello World", " "), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello,World", ","), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello,World,Bye", ","), vector2);
+    EXPECT_EQ(StringUtils::Split("Hello,   World", ","), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello    ,World", ","), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello   ,   World", ","), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello,  World,  Bye", ","), vector2);
+    EXPECT_EQ(StringUtils::Split("Hello,World,Bye,", ","), vector2);
+    EXPECT_EQ(StringUtils::Split(",Hello,World,Bye", ","), vector2);
+    EXPECT_EQ(StringUtils::Split(",Hello,World,Bye,", ","), vector2);
+    EXPECT_EQ(StringUtils::Split(",,Hello,,World,,Bye,,", ",,"), vector2);
+    EXPECT_EQ(StringUtils::Split("Hello!!!World", "!!!"), vector1);
+    EXPECT_EQ(StringUtils::Split("Hello!!!World!!!", "!!!"), vector1);
+
 }
 
 TEST(StringUtilsTest, Join){

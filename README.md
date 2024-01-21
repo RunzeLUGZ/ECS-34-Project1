@@ -25,5 +25,5 @@ void findRepeatedInstances(const std::string &str, int length) {
     }
 }
 
-changes: this response by chatgpt does not have an existing instance to look for, therefore for this project, I changed the loop so that it only contains one for loop to look for any repeated substring. 
+changes: this response by chatgpt does not have an existing instance to look for, therefore for this project, I modified the loop using the same idea so that it only contains one for loop to look for any repeated substrings. 
 

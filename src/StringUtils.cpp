@@ -174,7 +174,43 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
     // Replace code here
-    return {};
+    std::vector<std::string> newvec;
+    std::string temp = str;
+    std::string split;
+    int n = str.length();
+    int length = splt.length();
+    int index = 0;
+
+    if (splt.empty()){
+        split = " ";
+        length = 1;
+    }
+    else{
+        split = splt;
+    }
+
+    for(int i = 0; i < n; i++){
+        if (i <= n - length) {
+            std::string sub = str.substr(i, length);
+            if(sub == split){
+                if(i == 0){
+                    i += length;
+                    index = i;
+                }
+                else{
+                    newvec.push_back(Strip(str.substr(index, i-index)));
+                    i += length - 1;
+                    index = i + 1;
+                }
+            }
+        }
+    }
+
+    if(str.substr(n -length, length) != split){
+        newvec.push_back(Strip(str.substr(index, n - index)));
+    }
+
+    return newvec;
 }
 
 std::string Join(const std::string &str, const std::vector< std::string > &vect) noexcept{
