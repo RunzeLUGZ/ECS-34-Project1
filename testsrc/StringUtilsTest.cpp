@@ -130,7 +130,15 @@ TEST(StringUtilsTest, Split){
 }
 
 TEST(StringUtilsTest, Join){
-    
+    std::vector<std::string> vector1 = {"Hello","World"};
+    std::vector<std::string> vector2 = {"Hello","World","Bye"};
+    std::vector<std::string> vector3 = {"Hello"};
+    EXPECT_EQ(StringUtils::Join("+", vector1), "Hello+World");
+    EXPECT_EQ(StringUtils::Join("!!", vector1), "Hello!!World");
+    EXPECT_EQ(StringUtils::Join("+", vector2), "Hello+World+Bye");
+    EXPECT_EQ(StringUtils::Join(std::string(), vector1), "HelloWorld");
+    EXPECT_EQ(StringUtils::Join("+", vector1), "Hello+World");
+    EXPECT_EQ(StringUtils::Join("+", vector3), "Hello");
 }
 
 TEST(StringUtilsTest, ExpandTabs){
