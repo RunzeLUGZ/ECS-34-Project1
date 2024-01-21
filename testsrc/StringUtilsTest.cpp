@@ -68,14 +68,14 @@ TEST(StringUtilsTest, Strip){
 }
 
 TEST(StringUtilsTest, Center){
-    /*EXPECT_EQ(StringUtils::Center("ab",5,'-'), "-ab--");
+    EXPECT_EQ(StringUtils::Center("ab",5,'-'), "-ab--");
     EXPECT_EQ(StringUtils::Center("A",4,'-'), "-A--");
     EXPECT_EQ(StringUtils::Center("A",3,'-'), "-A-");
     EXPECT_EQ(StringUtils::Center("A",5,'-'), "--A--");
-    EXPECT_EQ(StringUtils::Center("ABC",4,'-'), "--ABC--");
-    EXPECT_EQ(StringUtils::Center("ABC",5,'-'), "--ABC---");
-    EXPECT_EQ(StringUtils::Center("ABC",5,'*'), "**ABC***");
-    EXPECT_EQ(StringUtils::Center(std::string(), 5, '$'), "$$$$$");*/
+    EXPECT_EQ(StringUtils::Center("ABC",4,'-'), "ABC-");
+    EXPECT_EQ(StringUtils::Center("ABC",5,'-'), "-ABC-");
+    EXPECT_EQ(StringUtils::Center("ABC",5,'*'), "*ABC*");
+    EXPECT_EQ(StringUtils::Center(std::string(), 5, '$'), "$$$$$");
 }
 
 TEST(StringUtilsTest, LJust){

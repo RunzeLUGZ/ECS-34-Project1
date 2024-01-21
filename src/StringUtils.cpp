@@ -129,18 +129,21 @@ std::string RJust(const std::string &str, int width, char fill) noexcept{
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
     // Replace code here
-    /*std::string temp;
+    std::string temp;
+    std::string fin;
 
     if(str.empty()){
-        for (size_t i = 0; i < width - str.length(); i++){
+        for (int i = 0; i < width; i++){
             temp += fill;
         }
-        return temp + str;
+        return temp;
     }
     else {
-        return (LJust(RJust(str, 2/width + 1, fill), width));
-    }*/
-    return "";
+        int num = width - str.length();
+        temp = RJust(str, str.length() + num/2, fill);
+        fin = LJust(temp, width, fill);
+        return fin;
+    }
 }
 
 
