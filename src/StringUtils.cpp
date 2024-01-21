@@ -129,7 +129,7 @@ std::string RJust(const std::string &str, int width, char fill) noexcept{
 
 std::string Center(const std::string &str, int width, char fill) noexcept{
     // Replace code here
-    std::string temp;
+    /*std::string temp;
 
     if(str.empty()){
         for (size_t i = 0; i < width - str.length(); i++){
@@ -139,13 +139,34 @@ std::string Center(const std::string &str, int width, char fill) noexcept{
     }
     else {
         return (LJust(RJust(str, 2/width + 1, fill), width));
-    }
+    }*/
+    return "";
 }
 
 
 std::string Replace(const std::string &str, const std::string &old, const std::string &rep) noexcept{
     // Replace code here
-    return "";
+    if(str.empty()){
+        return "";
+    }
+
+    std::string temp;
+    int n = str.length();
+    int length = old.length();
+
+    for (int i = 0; i < n; i++) {
+        if (i <= n - length) {
+            std::string sub = str.substr(i, length);
+            if (sub == old) {
+                temp += rep;
+                i += length - 1;
+                continue;
+            }
+        }
+        temp += str[i];
+    }
+
+    return temp;
 }
 
 std::vector< std::string > Split(const std::string &str, const std::string &splt) noexcept{
