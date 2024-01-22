@@ -142,7 +142,13 @@ TEST(StringUtilsTest, Join){
 }
 
 TEST(StringUtilsTest, ExpandTabs){
-    
+    EXPECT_EQ(StringUtils::ExpandTabs("\t", 4), "    ");
+    EXPECT_EQ(StringUtils::ExpandTabs("Hello\tWorld", 4), "Hello   World");
+	EXPECT_EQ(StringUtils::ExpandTabs("Hello\tWorld", 8), "Hello   World");
+	EXPECT_EQ(StringUtils::ExpandTabs("Hello\tWorld", 5), "Hello     World");
+	EXPECT_EQ(StringUtils::ExpandTabs("Hello\tWorld\tBye", 5), "Hello     World     Bye");
+	EXPECT_EQ(StringUtils::ExpandTabs("Hello\tWorld\tBye", 3), "Hello World Bye");
+	EXPECT_EQ(StringUtils::ExpandTabs("Hello", 5), "Hello");
 }
 
 TEST(StringUtilsTest, EditDistance){
