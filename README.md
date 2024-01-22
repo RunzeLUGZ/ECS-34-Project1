@@ -2,6 +2,17 @@
 
 Name: Runze Lu (ID 921187947)
 
+## Known Issues
+
+EditDistance does not work properly and only computes the edit distance that ignores case. I do not fully understand how to implement this algorithm but understand the idea behind it and the table that is commonly used to compute edit distances.  
+
+## Reference
+EditDistance Function: https://cppsecrets.com/users/101611099712197110107114971065149535048484864103109971051084699111109/C00-Edit-Distance-Using-Dynamic-Programming.php
+
+### changed:
+
+I changed the variable names to left and right so that it matches the function signature, and I also changed int to size_t on line 273 in order to match left.size().
+
 ## Generative AI Use
 
 For the function capitalize, I used Chatgpt to fix my for loop that iterated through the characters after the first one in the string and learned to use size_t as an unsigned integer type to declare i
@@ -25,13 +36,5 @@ void findRepeatedInstances(const std::string &str, int length) {
     }
 }
 
-changes: this response by chatgpt does not have an existing instance to look for, therefore for this project, I modified the loop using the same idea so that it only contains one for loop to look for any repeated substrings. 
-
-### Accessing Vector in C++
-prompt: How to I access the elements in a C++ vector?
-Response: Accessing elements in a C++ vector can be done in several ways, depending on your needs and preferences. Here are some common methods:
-Using the [] operator: This is similar to accessing elements in an array. You simply use the index to access the element. Remember that indices in C++ start at 0.
-
-std::vector<int> v = {1, 2, 3, 4, 5};
-int element = v[2]; // Accesses the third element (3)
+changes: this response by chatgpt does not have an existing instance to look for, therefore for this project, I modified the loop using the same idea so that it only contains one for loop to look for any repeated substrings. I did not directly copy from the response. 
 

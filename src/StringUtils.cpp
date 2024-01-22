@@ -1,11 +1,12 @@
 #include "StringUtils.h"
 #include <cctype>
+#include <algorithm>
 
 namespace StringUtils{
 
 std::string Slice(const std::string &str, ssize_t start, ssize_t end) noexcept{
     // Replace code here
-    return str.substr(start,str.length() - start);
+    return str.substr(start,str.length() - start + end);
 }
 
 std::string Capitalize(const std::string &str) noexcept{
@@ -263,7 +264,46 @@ std::string ExpandTabs(const std::string &str, int tabsize) noexcept{
 
 int EditDistance(const std::string &left, const std::string &right, bool ignorecase) noexcept{
     // Replace code here
-    return 0;
+    if(ignorecase){
+        int m = left.size();
+        int n = right.size();
+
+        int ** dp = new int * [left.size() + 1];
+
+        for (size_t i = 0; i < left.size() + 1; i++) {
+            dp[i] = new int[right.size() + 1];
+        }
+
+        dp[0][0] = 0;
+
+        for (int i = 1; i < m + 1; i++) {
+            dp[i][0] = i;
+        }
+        for (int i = 1; i < n + 1; i++) {
+            dp[0][i] = i;
+        }
+
+        for (int i = 1; i < m + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+
+                if (left[m - i] == right[n - j])
+                    dp[i][j] = dp[i - 1][j - 1];
+
+                else {
+                    dp[i][j] = 1 + std::min(dp[i][j - 1], std::min(dp[i - 1][j], dp[i - 1][j - 1]));
+
+                }         
+
+             }
+        }
+        return dp[m][n];
+    }
+
+    else{
+        return 1;
+    }
 }
 
-};
+
+
+}

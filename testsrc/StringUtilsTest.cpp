@@ -7,6 +7,11 @@ TEST(StringUtilsTest, SliceTest){
     EXPECT_EQ(StringUtils::Slice(Base,0), "Hello");
     EXPECT_EQ(StringUtils::Slice(Base,1), "ello");
     EXPECT_EQ(StringUtils::Slice(Base,2), "llo");
+	EXPECT_EQ(StringUtils::Slice(Base,0, -1), "Hell");
+	EXPECT_EQ(StringUtils::Slice(Base,1, -1), "ell");
+	EXPECT_EQ(StringUtils::Slice(Base,0, -2), "Hel");
+	EXPECT_EQ(StringUtils::Slice(Base,0, -5), "");
+	EXPECT_EQ(StringUtils::Slice("Hello World!",0, -1), "Hello World");
 }
 
 TEST(StringUtilsTest, Capitalize){
@@ -152,5 +157,12 @@ TEST(StringUtilsTest, ExpandTabs){
 }
 
 TEST(StringUtilsTest, EditDistance){
-    
+    EXPECT_EQ(StringUtils::EditDistance("Hello World", "Hello World", true), 0);
+	EXPECT_EQ(StringUtils::EditDistance("Hello World", "Hello", true), 6);
+	EXPECT_EQ(StringUtils::EditDistance("Hello World", "Happy World", true), 4);
+	EXPECT_EQ(StringUtils::EditDistance("Hello World", "Dinasour", true), 10);
+	EXPECT_EQ(StringUtils::EditDistance("Hello World", "Laptop", true), 9);
+	EXPECT_EQ(StringUtils::EditDistance("Hello World", "hello world"), 2);
+	EXPECT_EQ(StringUtils::EditDistance("Hello World", "Hello World"), 0);
+	EXPECT_EQ(StringUtils::EditDistance("hello", "HELLO"), 5);
 }
